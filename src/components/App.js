@@ -6,6 +6,7 @@ import {setUser} from '../redux/actions'
 import {Route, Switch} from 'react-router-dom'
 import Start from './Start'
 import SignUp from './SignUp'
+
 class App extends Component { 
    
   componentDidMount(){ 

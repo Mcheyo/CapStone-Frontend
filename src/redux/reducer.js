@@ -1,8 +1,10 @@
+import {combineReducers} from "redux"
+
 
 const intialState = { 
     user: {}
 }
-function reducer(state = intialState, action){ 
+function userReducer(state = intialState, action){ 
     switch(action.type){ 
         case "GET_USER": 
          return { user: action.payload}
@@ -11,4 +13,18 @@ function reducer(state = intialState, action){
     }
 }
 
-export default reducer 
+function signUpReducer(state = '', action){ 
+    
+    switch(action.type){ 
+        case"RENDER_SIGN_UP" : 
+        return {state: action.payload}
+        default: 
+        return state
+    }
+}
+const rootReducer = combineReducers({
+   user : userReducer,
+    signUp : signUpReducer
+  })
+  
+export default rootReducer
