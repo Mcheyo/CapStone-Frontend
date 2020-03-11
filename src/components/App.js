@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {setUser} from '../redux/actions'
 import {Route, Switch} from 'react-router-dom'
 import Start from './Start'
-import SignUp from './SignUp'
+import SignUpMain from './SignUpMain'
 
 class App extends Component { 
    
@@ -26,9 +26,9 @@ class App extends Component {
       <div className="App"> 
       <Navbar/> 
       <Switch>
-        <Route exact path='/signup' component={SignUp}/> 
+        <Route exact path='/signup' component={SignUpMain}/> 
         <Route exact path = '/profile' component={Profile}/>
-        <Route path='/' component={Start}/> 
+        <Route exact path='/' component={Start}/> 
       </Switch>
       </div>
     )

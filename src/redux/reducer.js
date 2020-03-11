@@ -17,7 +17,7 @@ function signUpReducer(state = '', action){
     
     switch(action.type){ 
         case"RENDER_SIGN_UP" : 
-        return {state: action.payload}
+        return action.payload
         default: 
         return state
     }
