@@ -22,9 +22,20 @@ function signUpReducer(state = '', action){
         return state
     }
 }
+
+function skillsReducer(state= [], action){ 
+    
+    switch(action.type){ 
+        case"GET_SKILLS": 
+        return action.payload
+        default: 
+        return state 
+    }
+}
 const rootReducer = combineReducers({
    user : userReducer,
-    signUp : signUpReducer
+    signUp : signUpReducer,
+    skills : skillsReducer
   })
   
 export default rootReducer
