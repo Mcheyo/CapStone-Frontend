@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Button, Form, Card, DropdownButton, Dropdown} from 'react-bootstrap'
+import {Button, Form, Card} from 'react-bootstrap'
+import {setUser} from '../redux/actions'
+import {Redirect, Link} from 'react-router-dom'
 
 class SignUpDeveloper extends Component  {
     state= { 
@@ -8,7 +10,8 @@ class SignUpDeveloper extends Component  {
         username: '', 
         password: '', 
         name: '', 
-        bio: ''
+        bio: '', 
+        redirect: false 
     }
 
     handleChange =(event) => { 
@@ -17,7 +20,7 @@ class SignUpDeveloper extends Component  {
         this.setState({[id]: value })
     }
     handleSkills= skill => { 
-        if(!this.state.mySkills.includes(skill)){ 
+        if(!this.state.mySkills.includes(skill.id)){ 
         let newArray =[].concat(this.state.mySkills)
         this.setState({mySkills: [...newArray, skill.id]})
         }
@@ -29,10 +32,30 @@ class SignUpDeveloper extends Component  {
     addUser = e => { 
         e.preventDefault()
         const{name, bio, password, username} = this.state
-        fetch('https://')
+        fetch('http://localhost:3000/users',{ 
+            method: "POST", 
+            headers: {
+                  "Content-Type" : 
+                  "application/json",
+                  Accept:"application/json"
+                }, 
+                body: JSON.stringify({name:`${name}`, bio:`${bio}`, password:`${password}`, username:`${username}`, skill:this.state.mySkills  })
+             })
+             .then( res => res.json())
+             .then(user =>{  
+                if(user.message){ 
+                    user.message.forEach(mes => alert(mes))
+                }
+                else{  
+                    this.props.onFetch(user)
+                    this.setState({redirect: true})
+                }
+                })
     }
     render(){ 
-        
+        if(this.state.redirect){ 
+            return <Redirect to="/profile"/>
+        }
         return (
             <div>
                 <Card className="form-card">
@@ -67,10 +90,7 @@ class SignUpDeveloper extends Component  {
                                 id="password"
                                 onChange={(event) =>this.handleChange(event)}
                             />
-                            {/* <DropdownButton id="dropdown-basic-button" title="Skills">{ 
-                            this.props.skills.map(skill =>  <Dropdown.Item onClick={ () => this.handleSkills(skill)}>{skill.name}</Dropdown.Item>)
-                            }
-                            </DropdownButton> */}
+                        
                             {this.props.skills.map(skill => <Form.Check inline label={skill.name} type={"radio"} onClick={ () => this.handleSkills(skill)} />)}
                             <br></br>
                             <Form.Label>About Me</Form.Label>
@@ -103,8 +123,10 @@ const mapStateToProps = (state) => ({
     skills: state.skills 
 })
 
-const mapDispatchToProps = {
-    
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        onFetch: (userObj) => dispatch(setUser(userObj))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpDeveloper)

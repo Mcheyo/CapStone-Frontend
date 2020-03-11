@@ -7,7 +7,7 @@ const intialState = {
 function userReducer(state = intialState, action){ 
     switch(action.type){ 
         case "GET_USER": 
-         return { user: action.payload}
+         return  action.payload
         default: 
         return state 
     }
