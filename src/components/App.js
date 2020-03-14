@@ -6,19 +6,19 @@ import {setUser, getSkills} from '../redux/actions'
 import {Route, Switch} from 'react-router-dom'
 import Start from './Start'
 import SignUpMain from './SignUpMain'
-import {Proposal} from './Proposal'
+import Proposal from './Proposal'
 
 class App extends Component { 
    
   componentDidMount(){ 
     
-    // fetch('http://localhost:3000/users/1')
-    // .then( res => res.json())
-    // .then(user => { 
-    //   let t = this 
+    fetch('http://localhost:3000/users/13')
+    .then( res => res.json())
+    .then(user => { 
       
-    //   this.props.onFetch(user)
-    // })
+      
+      this.props.onFetch(user)
+    })
  
     fetch('http://localhost:3000/skills')
     .then(res => res.json())

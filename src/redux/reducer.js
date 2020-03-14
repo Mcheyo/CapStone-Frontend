@@ -4,7 +4,7 @@ import {combineReducers} from "redux"
 const intialState = { 
     user: {}
 }
-function userReducer(state = intialState, action){ 
+function userReducer(state = {}, action){ 
     switch(action.type){ 
         case "GET_USER": 
          return  action.payload
