@@ -6,7 +6,7 @@ import {setUser, getSkills} from '../redux/actions'
 import {Route, Switch} from 'react-router-dom'
 import Start from './Start'
 import SignUpMain from './SignUpMain'
-import Proposal from './Proposal'
+import ProposalSignUp from './ProposalSignUp'
 
 class App extends Component { 
    
@@ -33,7 +33,7 @@ class App extends Component {
         <Route exact path='/signup' component={SignUpMain}/> 
         <Route exact path = '/profile' component={Profile}/>
         <Route exact path='/' component={Start}/> 
-        <Route exact path= '/proposal' component={Proposal} />
+        <Route exact path= '/proposal' component={ProposalSignUp} />
       </Switch>
       </div>
     )

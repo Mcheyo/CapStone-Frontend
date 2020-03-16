@@ -11,7 +11,7 @@ class SignUpClient extends Component {
       name: '', 
       username: '', 
       password: '', 
-      bio: '', 
+      bio: '',
       redirect: false 
 
   }
