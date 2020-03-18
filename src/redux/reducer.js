@@ -1,9 +1,7 @@
 import {combineReducers} from "redux"
 
 
-const intialState = { 
-    user: {}
-}
+
 function userReducer(state = {}, action){ 
     switch(action.type){ 
         case "GET_USER": 
@@ -32,10 +30,21 @@ function skillsReducer(state= [], action){
         return state 
     }
 }
+
+function projectsReducer(state= {}, action){ 
+    
+    switch(action.type){ 
+        case"GET_PROJECT": 
+        return action.payload
+        default: 
+        return state 
+    }
+}
 const rootReducer = combineReducers({
    user : userReducer,
     signUp : signUpReducer,
-    skills : skillsReducer
+    skills : skillsReducer,
+    projects : projectsReducer
   })
   
 export default rootReducer

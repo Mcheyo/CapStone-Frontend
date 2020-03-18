@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {setUser} from '../redux/actions'
 import {Button, Form, Card} from 'react-bootstrap'
-import {Redirect, Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 
 

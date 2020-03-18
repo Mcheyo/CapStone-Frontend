@@ -10,4 +10,8 @@ function signUp(value){
 function getSkills(skills){ 
     return {type: "GET_SKILLS", payload: skills}
 }
-export {setUser, signUp, getSkills}
+
+function getProject(project){ 
+    return{type: "GET_PROJECT", payload: project}
+}
+export {setUser, signUp, getSkills, getProject}

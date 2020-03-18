@@ -7,9 +7,9 @@ const SignUp = props => {
     
     return(
         <div>
-             { props.value =="developer"?
+             { props.value ==="developer"?
              <SignUpDeveloper/>: 
-             props.value=="client"?
+             props.value==="client"?
             <SignUpClient/>: 
             <Redirect to={'/'}/>
             

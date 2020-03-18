@@ -6,8 +6,8 @@ import {setUser, getSkills} from '../redux/actions'
 import {Route, Switch} from 'react-router-dom'
 import Start from './Start'
 import SignUpMain from './SignUpMain'
-import ProposalSignUp from './ProposalSignUp'
-
+import NewProject from './NewProject'
+import ProjectShow from './ProjectShow'
 class App extends Component { 
    
   componentDidMount(){ 
@@ -33,7 +33,8 @@ class App extends Component {
         <Route exact path='/signup' component={SignUpMain}/> 
         <Route exact path = '/profile' component={Profile}/>
         <Route exact path='/' component={Start}/> 
-        <Route exact path= '/proposal' component={ProposalSignUp} />
+        <Route exact path= '/project/new' component={NewProject} />
+        <Route exact path='/project' component={ProjectShow} />
       </Switch>
       </div>
     )

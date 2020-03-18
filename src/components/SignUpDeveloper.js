@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Button, Form, Card} from 'react-bootstrap'
 import {setUser} from '../redux/actions'
-import {Redirect, Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class SignUpDeveloper extends Component  {
     state= { 

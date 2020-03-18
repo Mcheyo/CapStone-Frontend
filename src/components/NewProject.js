@@ -3,15 +3,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Button, Form, Card} from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
+import {getProject} from '../redux/actions'
 
 
-class ProposalSignUp extends Component {
+class NewProject extends Component {
     state={ 
         idea: '', 
         skillsNeeded: [], 
         Platform: {}, 
         Field: {},
-        Language: {}
+        Language: {}, 
+        name: '', 
+        redirect: false
     }
     handleChange =(event) => { 
         
@@ -35,29 +39,38 @@ class ProposalSignUp extends Component {
       handleSubmit = e => { 
           const idea = `I want to make a ${this.state.Platform.name} based in ${this.state.Field.name} that will ${this.state.idea}`
           const user = this.props.user.id
-          const {skillsNeeded} = this.state
-          debugger
+          const {skillsNeeded, name} = this.state
+          
           e.preventDefault()
-          fetch('http://localhost:3000/proposals', { 
+          fetch('http://localhost:3000/projects', { 
               method: "POST", 
               headers: {
                 "Content-Type" : 
                 "application/json",
                 Accept:"application/json"
               }, 
-              body: JSON.stringify({idea: idea, client:user, skills:skillsNeeded } )
+              body: JSON.stringify({idea: idea, client:user, skills:skillsNeeded, name:name} )
           })
           .then (res => res.json())
           .then( data => { 
-              debugger
-              console.log(data)
+            if(data.message){ 
+                data.message.forEach(mes => alert(mes))
+            }
+              else {
+                
+              this.props.setProject(data)
+              this.setState({redirect: true})
+              }
           })
       }  
     render() {
         
         const platforms = this.props.skills.filter(skill => skill.category ==="Platform")
         const field = this.props.skills.filter(skill => skill.category ==="Field")
-        const language = this.props.skills.filter(skill => skill.category ==="Language")
+        // const language = this.props.skills.filter(skill => skill.category ==="Language")
+        if(this.state.redirect){ 
+            return <Redirect to="/project"/>
+        }
         
         return (
             <div>
@@ -84,6 +97,15 @@ class ProposalSignUp extends Component {
                                 onChange={(event) => this.handleChange(event)}
                             />
                             </Form.Group>
+                            <Form.Label>That is called</Form.Label>
+                               <input
+                                className="form-control"
+                                type="text"
+                                placeholder="Give your project a name!"
+                                id="name"
+                                value={this.state.name}
+                                onChange={(event) => this.handleChange(event)}
+                            />
                             
                             <Form.Group>
                                 <Button variant="primary" size="lg" block
@@ -106,8 +128,8 @@ const mapStateToProps = (state) => {
       return { skills: state.skills, user:state.user }
 }
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps =dispatch =>  ({
+    setProject: (project) => dispatch(getProject(project))
+})
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProposalSignUp)
+export default connect(mapStateToProps,mapDispatchToProps)(NewProject)
