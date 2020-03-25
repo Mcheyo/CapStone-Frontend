@@ -1,29 +1,64 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getProject} from '../redux/actions'
+import {Button} from 'react-bootstrap'
 export class ProjectShow extends Component {
   state = { 
       
-      loading: true 
+      project: {}, 
+      suggestedUsers: [], 
+      loading: true
   }
   componentDidMount(){ 
-
+    
+    let id = this.props.projectToShow.id
+    fetch(`http://localhost:3000/projects/${id}`)
+    .then(res => res.json())
+    .then(project => { 
+        this.setState({project:project.project, suggestedUsers:project.suggested_users, loading:false})
+        
+    })
   }
+
+sendProposal = (user) => { 
+    let client = this.state.project.client_id
+    let developer = user.id 
+    let idea = this.state.project.idea
+    let project = this.state.project.id
+    
+ fetch('http://localhost:3000/proposals',{ 
+     method:"POST", 
+     headers: {
+        "Content-Type" : 
+        "application/json",
+        Accept:"application/json"
+      }, 
+      body: JSON.stringify({client_id: client, developer:developer, idea:idea, project:project})
+ })
+ .then(res => res.json())
+ .then(proposal => console.log(proposal))
+
+}
     render() {
-       debugger  
+    
        
         const{name, id, status, idea} = this.props.projectToShow
         
     
         return (
+            !this.state.loading?
             <div>
+                <div>
+                    Here are some suggested users that can make your app!
+        {this.state.suggestedUsers.map(user => <div> {user.name} <Button onClick={ () => this.sendProposal(user)}/> </div>  )}
+                </div>
                  <h1>{name}</h1>
                  <h3>{status}</h3>
                     <p>{idea}</p>
              
                                
                 
-            </div>
+            </div>: <div>loading</div>
         )
     }
 }

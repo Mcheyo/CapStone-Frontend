@@ -37,8 +37,10 @@ function projectsReducer(state= {}, action){
         case"GET_PROJECT": 
         return action.payload
         case"GET_ALL_PROJECTS": 
-        
         return action.payload
+        case"ADD_PROJECT":
+        state.push(action.payload.project)
+        return  state 
         default: 
         return state 
     }

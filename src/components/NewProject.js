@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Button, Form, Card} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
-import {getProject} from '../redux/actions'
+import {getProject, addProject} from '../redux/actions'
 
 
 class NewProject extends Component {
@@ -69,7 +69,9 @@ class NewProject extends Component {
         const field = this.props.skills.filter(skill => skill.category ==="Field")
         // const language = this.props.skills.filter(skill => skill.category ==="Language")
         if(this.state.redirect){ 
-            return <Redirect to="/project"/>
+            
+            let id = this.props.project.find(project => project.name === this.state.name).id 
+            return <Redirect to={`/project/${id}`}/>
         }
         
         return (
@@ -125,11 +127,11 @@ class NewProject extends Component {
 
 const mapStateToProps = (state) => {
     
-      return { skills: state.skills, user:state.user }
+      return { skills: state.skills, user:state.user, project:state.projects }
 }
 
 const mapDispatchToProps =dispatch =>  ({
-    setProject: (project) => dispatch(getProject(project))
+    setProject: (project) => dispatch(addProject(project))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(NewProject)

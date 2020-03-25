@@ -17,4 +17,7 @@ function getProject(project){
 function getAllProjects(project_array){ 
     return{type: "GET_ALL_PROJECTS", payload :project_array}
 }
-export {setUser, signUp, getSkills, getProject, getAllProjects}
+function addProject(project){ 
+    return{type: "ADD_PROJECT", payload:project}
+}
+export {setUser, signUp, getSkills, getProject, getAllProjects, addProject}

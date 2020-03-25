@@ -43,7 +43,7 @@ class App extends Component {
         <Route exact path= '/project/new' component={NewProject} />
         <Route exact path='/project/:id' render={(props)=> { 
           let id = parseInt(props.match.params.id)
-          
+            
           let projectToShow = this.props.projects.find(project => project.id === id)
           
           return <ProjectShow projectToShow={projectToShow}/>
