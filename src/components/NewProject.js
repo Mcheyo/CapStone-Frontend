@@ -57,7 +57,7 @@ class NewProject extends Component {
                 data.message.forEach(mes => alert(mes))
             }
               else {
-                
+            console.log(data)
               this.props.setProject(data)
               this.setState({redirect: true})
               }

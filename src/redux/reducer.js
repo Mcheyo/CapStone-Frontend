@@ -36,6 +36,9 @@ function projectsReducer(state= {}, action){
     switch(action.type){ 
         case"GET_PROJECT": 
         return action.payload
+        case"GET_ALL_PROJECTS": 
+        
+        return action.payload
         default: 
         return state 
     }

@@ -14,4 +14,7 @@ function getSkills(skills){
 function getProject(project){ 
     return{type: "GET_PROJECT", payload: project}
 }
-export {setUser, signUp, getSkills, getProject}
+function getAllProjects(project_array){ 
+    return{type: "GET_ALL_PROJECTS", payload :project_array}
+}
+export {setUser, signUp, getSkills, getProject, getAllProjects}

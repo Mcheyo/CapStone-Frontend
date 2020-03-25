@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import {getProject} from '../redux/actions'
 export class ProjectShow extends Component {
   state = { 
+      
       loading: true 
   }
-  
+  componentDidMount(){ 
+
+  }
     render() {
+       debugger  
        
-        const{name, id, status, idea} = this.props.projects.project
+        const{name, id, status, idea} = this.props.projectToShow
         
-    debugger
+    
         return (
             <div>
                  <h1>{name}</h1>
