@@ -6,15 +6,17 @@ import {signUp} from '../redux/actions'
 const Start = props => { 
     
     return( 
-        <div>
+        <div className="StartPageButtons text-center">
             <Link to={'/signup'}>
           <Button variant="primary"
           value="client"
           onClick={(e) => props.onClick(e.target.value)}
+          className="ClientButton"
           >I have an Idea! </Button>
           <Button variant="dark"
           value="developer"
           onClick={(e) => props.onClick(e.target.value)}
+          className="DeveloperButton"
           >I can make an Idea 
           </Button>
            </Link>

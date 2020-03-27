@@ -44,17 +44,17 @@ sendProposal = (user) => {
        
         const{name, id, status, idea} = this.props.projectToShow
         
-    
+         let proposal = "Propose!"
         return (
             !this.state.loading?
-            <div>
-                <div>
-                    Here are some suggested users that can make your app!
-        {this.state.suggestedUsers.map(user => <div> {user.name} <Button onClick={ () => this.sendProposal(user)}/> </div>  )}
-                </div>
+            <div className="proposal-box">
                  <h1>{name}</h1>
                  <h3>{status}</h3>
                     <p>{idea}</p>
+                <div>
+                    Here are some suggested users that can make your app!
+        {this.state.suggestedUsers.map(user => <div> {user.name} <Button  onClick={ () => this.sendProposal(user)} placeholder={proposal}> Propose!</Button> </div>  )}
+                </div>
              
                                
                 

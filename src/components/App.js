@@ -8,6 +8,7 @@ import Start from './Start'
 import SignUpMain from './SignUpMain'
 import NewProject from './NewProject'
 import ProjectShow from './ProjectShow'
+import '../App.css'
 class App extends Component { 
    
   state={ 
@@ -15,7 +16,7 @@ class App extends Component {
   }
   componentDidMount(){ 
     
-    fetch('http://localhost:3000/users/13')
+    fetch('http://localhost:3000/users/14')
     .then( res => res.json())
     .then(user => { 
     this.props.onFetch(user)

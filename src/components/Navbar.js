@@ -4,9 +4,11 @@ import {Navbar} from 'react-bootstrap'
 
 const NavbarComponent = () =>{ 
     return( 
-        <div>
-    <Navbar bg="light">
+        <div className="Navbar">
+    <Navbar >
              <Navbar.Brand href="/">Home</Navbar.Brand>
+             <Navbar.Brand href="/profile">Profile</Navbar.Brand>
+
      </Navbar>
         </div>
     )

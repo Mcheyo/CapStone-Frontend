@@ -13,6 +13,63 @@
   }
 }
 
+
+body {
+  /* padding-top: 75px; */
+  padding-bottom: 55px;
+  height: 100%;
+  background: url(./background.jpg) no-repeat center/cover fixed;
+}
+.Navbar{ 
+  position: sticky;
+  background-color: red;
+}
+.StartPageButtons{ 
+  display: flex;
+  justify-content: center;
+ align-items: center;
+}
+.ClientButton{
+  display: flex;
+  justify-content: center;
+ align-items: center;
+}
+.DeveloperButton{ 
+  display: flex;
+  justify-content: center;
+ align-items: center;
+}
+
+.proposal-box{
+  background-color: black;
+  opacity: .7;
+  color: white;
+  margin: 0 20%;
+}
+
+.Bio{ 
+  background-color: lightgoldenrodyellow;
+  margin: 0 10%; 
+  border-radius: 5%;
+}
+
+.Pending{ 
+  background-color: lightsalmon;
+  margin: 2% 10%;
+  border-radius: 20%;
+}
+
+.Accepted{ 
+  background-color: magenta;
+  margin: 2% 10%;
+  border-radius: 15%;
+}
+.Sent{
+  background-color: mediumaquamarine;
+  margin: 2% 10%;
+  border-radius: 15%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
