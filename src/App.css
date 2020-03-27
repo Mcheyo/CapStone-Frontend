@@ -18,11 +18,11 @@ body {
   /* padding-top: 75px; */
   padding-bottom: 55px;
   height: 100%;
-  background: url(./background.jpg) no-repeat center/cover fixed;
+  background: url(./background3.jpg) no-repeat center/cover fixed;
 }
 .Navbar{ 
   position: sticky;
-  background-color: red;
+  background-color: #B3650D;
 }
 .StartPageButtons{ 
   display: flex;
@@ -48,24 +48,24 @@ body {
 }
 
 .Bio{ 
-  background-color: lightgoldenrodyellow;
+  background-color: #FF9A26;
   margin: 0 10%; 
   border-radius: 5%;
 }
 
 .Pending{ 
-  background-color: lightsalmon;
+  background-color: #007EB3;
   margin: 2% 10%;
   border-radius: 20%;
 }
 
 .Accepted{ 
-  background-color: magenta;
+  background-color: #26BFFF;
   margin: 2% 10%;
   border-radius: 15%;
 }
 .Sent{
-  background-color: mediumaquamarine;
+  background-color: #FFA640;
   margin: 2% 10%;
   border-radius: 15%;
 }

@@ -25,7 +25,13 @@ class  Profile extends Component  {
 
 
     }
+
+    componentWillMount(){ 
+    debugger
+    }
+    
     render(){ 
+        
     const{name, bio, username, proposals_received, proposals_sent, working_projects, proposed_projects} = this.props.user
     const pendingProposals = proposals_received.filter(proposal => proposal.status === "Pending")
     const acceptedProposals = proposals_received.filter(proposal => proposal.status === "Accepted")
@@ -67,8 +73,8 @@ class  Profile extends Component  {
             <div className="Pending">
     Pending
      {pendingProposals.map(proposal => <div>{proposal.client.name} wants to make {proposal.idea} 
-     <button className="btn btn-danger" value="Accept" onClick={ (e) => this.handleClick(proposal, e)} >Accept</button> 
-    <button className="btn btn-light" value="Reject"  onClick={ (e) => this.handleClick(proposal, e)} > Reject</button>  
+     <button className="AcceptButton" value="Accept" onClick={ (e) => this.handleClick(proposal, e)} >Accept</button> 
+    <button className="RejectButton" value="Reject"  onClick={ (e) => this.handleClick(proposal, e)} > Reject</button>  
         </div> )}
 
             </div>
