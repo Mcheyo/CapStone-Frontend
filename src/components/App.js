@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Profile from './Profile'
 import {connect} from 'react-redux'
 import {setUser, getSkills, getAllProjects} from '../redux/actions'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Start from './Start'
 import SignUpMain from './SignUpMain'
 import NewProject from './NewProject'
@@ -16,7 +16,7 @@ class App extends Component {
   }
   componentDidMount(){ 
     
-    fetch('http://localhost:3000/users/14')
+    fetch('http://localhost:3000/users/13')
     .then( res => res.json())
     .then(user => { 
     this.props.onFetch(user)
@@ -33,13 +33,16 @@ class App extends Component {
      this.setState({loading: false })})
   }
   render(){ 
+    
     return( 
       !this.state.loading? 
       <div className="App"> 
       <Navbar/> 
       <Switch>
         <Route exact path='/signup' component={SignUpMain}/> 
-        <Route exact path = '/profile' component={Profile}/>
+        <Route exact path = '/profile' render={() => {
+          return this.props.user.name? <Profile/>: <Redirect to="/signup"/>
+        }}/>
         <Route exact path='/' component={Start}/> 
         <Route exact path= '/project/new' component={NewProject} />
         <Route exact path='/project/:id' render={(props)=> { 

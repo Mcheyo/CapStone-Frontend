@@ -26,7 +26,7 @@ sendProposal = (user, e) => {
     let developer = user.id 
     let idea = this.state.project.idea
     let project = this.state.project.id
-    e.target.disabled = false ?
+    e.target.disabled === false ?
     
     
  fetch('http://localhost:3000/proposals',{ 
@@ -39,7 +39,7 @@ sendProposal = (user, e) => {
       body: JSON.stringify({client_id: client, developer:developer, idea:idea, project:project})
  })
  .then(res => res.json())
- .then(proposal => alert(`You've sent the proposal!`), e.target.disabled=true)
+ .then(proposal => alert(`You've sent the proposal!`), e.target.disabled = true)
  : alert('Youve already sent this proposal!')
 
 }

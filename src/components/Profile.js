@@ -26,16 +26,18 @@ class  Profile extends Component  {
 
     }
 
-    componentWillMount(){ 
-    debugger
-    }
+    // componentWillMount(){ 
+
+    // }
     
     render(){ 
         
     const{name, bio, username, proposals_received, proposals_sent, working_projects, proposed_projects} = this.props.user
-    const pendingProposals = proposals_received.filter(proposal => proposal.status === "Pending")
-    const acceptedProposals = proposals_received.filter(proposal => proposal.status === "Accepted")
-    const rejectedProposals = proposals_received.filter(proposal => proposal.status === "Rejected")
+    const pendingProposals = this.props.user.proposals_received ? proposals_received.filter(proposal => proposal.status === "Pending") : []
+    const acceptedProposals =this.props.user.proposals_received ? proposals_received.filter(proposal => proposal.status === "Accepted") : []
+    const rejectedProposals = this.props.user.proposals_received ? proposals_received.filter(proposal => proposal.status === "Rejected") : []
+    const propProjects =  this.props.user.proposed_projects ? proposed_projects : []
+    const sentProposals = proposals_sent? proposals_sent : []
     return( 
         
         <div>
@@ -47,7 +49,7 @@ class  Profile extends Component  {
 <Row>
     <Col sm={8}>
         <CardDeck>
-   { proposed_projects.map(project => 
+   { propProjects.map(project => 
      <div className="col-lg-5 py-2">
       <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -85,7 +87,7 @@ class  Profile extends Component  {
 
             <div className="Sent">
               Sent Proposals
-              {proposals_sent.map(proposal => <div> You sent out: {proposal.project.name} to {proposal.developer.name} </div>)}
+              {sentProposals.map(proposal => <div> You sent out: {proposal.project.name} to {proposal.developer.name} </div>)}
             
               
             </div>

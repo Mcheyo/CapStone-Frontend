@@ -46,7 +46,7 @@ addUser = e => {
   
     render(){ 
         if(this.state.redirect){ 
-            return <Redirect to="/profile"/>
+            return <Redirect to="/project/new"/>
         }
            return (
             <div>
