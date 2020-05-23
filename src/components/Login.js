@@ -9,6 +9,22 @@ export class Login extends Component {
         name: "", 
         password: ""
     }
+    handleLoginSubmit = (e) => { 
+        e.preventDefault()
+        let params = this.state
+        fetch('http://localhost:3000/login',{ 
+            method: "POST", 
+            headers: {
+                "Content-Type" :"application/json", 
+                "Accept": "application/json"
+            }, 
+            body: JSON.stringify({
+                name: params.name
+            })
+        })
+        .then(res => res.json())
+        .then()
+    }
     render() {
         return (
             <div className="form-group"> 
