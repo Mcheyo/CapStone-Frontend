@@ -9,6 +9,7 @@ import SignUpMain from './SignUpMain'
 import NewProject from './NewProject'
 import ProjectShow from './ProjectShow'
 import '../App.css'
+import Login from './Login'
 class App extends Component { 
    
   state={ 
@@ -16,11 +17,11 @@ class App extends Component {
   }
   componentDidMount(){ 
     
-    fetch('http://localhost:3000/users/13')
-    .then( res => res.json())
-    .then(user => { 
-    this.props.onFetch(user)
-    })
+    // fetch('http://localhost:3000/users/13')
+    // .then( res => res.json())
+    // .then(user => { 
+    // this.props.onFetch(user)
+    // })
  
     fetch('http://localhost:3000/skills')
     .then(res => res.json())
@@ -45,6 +46,7 @@ class App extends Component {
         }}/>
         <Route exact path='/' component={Start}/> 
         <Route exact path= '/project/new' component={NewProject} />
+        <Route exact path ='/login' component={Login}/>
         <Route exact path='/project/:id' render={(props)=> { 
           let id = parseInt(props.match.params.id)
             

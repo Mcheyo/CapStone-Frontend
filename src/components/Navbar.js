@@ -8,7 +8,7 @@ const NavbarComponent = () =>{
     <Navbar >
              <Navbar.Brand href="/">Home</Navbar.Brand>
              <Navbar.Brand href="/profile">Profile</Navbar.Brand>
-
+             <Navbar.Brand href="/login">Login</Navbar.Brand>
      </Navbar>
         </div>
     )
