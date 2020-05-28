@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Button, Form, Card} from "react-bootstrap"
 import {Link} from "react-router-dom"
+import {setUser} from "../redux/actions"
 
 
 export class Login extends Component {
@@ -13,7 +14,7 @@ export class Login extends Component {
         e.preventDefault()
         let params = this.state
         fetch('http://localhost:3000/login',{ 
-            method: "", 
+            method: "POST", 
             headers: {
                 "Content-Type" :"application/json", 
                 "Accept": "application/json"
@@ -28,7 +29,7 @@ export class Login extends Component {
               alert(user.message)
           }  
           else{ 
-              
+          this.props.onFetch(user)
           }
        })
     }
@@ -84,8 +85,8 @@ const mapStateToProps = (state) => ({
     
 })
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = (dispatch) => ({
+    onFetch : (userObj) => dispatch(setUser(userObj))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
