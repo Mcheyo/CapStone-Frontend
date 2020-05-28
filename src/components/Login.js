@@ -13,7 +13,7 @@ export class Login extends Component {
         e.preventDefault()
         let params = this.state
         fetch('http://localhost:3000/login',{ 
-            method: "GET", 
+            method: "", 
             headers: {
                 "Content-Type" :"application/json", 
                 "Accept": "application/json"
@@ -23,7 +23,14 @@ export class Login extends Component {
             })
         })
         .then(res => res.json())
-        .then(user => console.log(user))
+        .then(user => {
+          if(user.message){ 
+              alert(user.message)
+          }  
+          else{ 
+              
+          }
+       })
     }
 
     handleChange = e => { 
