@@ -25,6 +25,11 @@ export class Login extends Component {
         .then(res => res.json())
         .then(user => console.log(user))
     }
+
+    handleChange = e => { 
+    this.setState({name: e.target.value})
+
+    }
     render() {
         return (
             <div className="form-group"> 
