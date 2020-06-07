@@ -10,6 +10,7 @@ import NewProject from './NewProject'
 import ProjectShow from './ProjectShow'
 import '../App.css'
 import Login from './Login'
+import Marketplace from './Marketplave'
 class App extends Component { 
    
   state={ 
@@ -54,6 +55,7 @@ class App extends Component {
           
           return <ProjectShow projectToShow={projectToShow}/>
         }} />
+        <Route exact path="/marketplace" component={Marketplace} />
       </Switch>
       </div>: <div>loading</div>
     )

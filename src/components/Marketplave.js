@@ -19,4 +19,4 @@ const mapStateToProps = (state) =>{
        project:state.projects
     }
 }
-
+export default connect(mapStateToProps)(Marketplace);
