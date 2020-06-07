@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-
+import {connect} from "react-redux"
 class Marketplace extends Component { 
 
-    componentDidMount(){ 
-        fetch('https://localhost:3000/projects')
+    
+}
+
+const mapStateToProps = (state) =>{ 
+    return { 
+       project:state.projects
     }
 }
+
